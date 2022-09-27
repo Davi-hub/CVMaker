@@ -1,0 +1,34 @@
+div.sheet > * {
+  font-size: 1rem !important;
+}
+
+.sheet {
+  width: 20.9cm;
+  height: 29.6cm;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cv {
+  width: 20.0cm;
+  height: 28.7cm;
+}
+
+.m-g-tile {
+  height: 98%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.first {
+  margin-right: 0.6rem;
+}
+
+.second {
+  margin-left: 0.6rem;
+}

@@ -1,0 +1,46 @@
+<form style="display: flex; flex-direction: column;" [formGroup]="f">
+  <div>
+    <mat-form-field>
+      <ng-container>
+        <input type="text" matInput placeholder="Mettől?" formControlName="yearsFrom">
+      </ng-container>
+    </mat-form-field>
+
+    <mat-form-field>
+      <ng-container>
+        <input type="text" matInput placeholder="Meddig?" formControlName="yearsTo">
+      </ng-container>
+    </mat-form-field>
+  </div>
+  <mat-form-field>
+    <ng-container>
+      <input type="text" matInput placeholder="Hol?" formControlName="contentFirst">
+    </ng-container>
+  </mat-form-field>
+
+  <mat-form-field>
+    <ng-container>
+      <input type="text" matInput placeholder="Ezen belül?" formControlName="contentSecond">
+    </ng-container>
+  </mat-form-field>
+
+  <div *ngFor="let item of refForm.controls, let i = index" formArrayName="contentThird">
+    <div [formGroupName]="i">
+    <mat-form-field>
+        <ng-container>
+          <input type="text" matInput placeholder="Részletek..." formControlName="item">
+        </ng-container>
+      </mat-form-field>
+      <mat-form-field>
+          <ng-container>
+            <input type="text" matInput placeholder="Link" formControlName="cerLink">
+          </ng-container>
+      </mat-form-field>
+    </div>
+  </div>
+    <button mat-raised-button (click)="inDialogAddButton()" color="accent"><mat-icon>add</mat-icon></button>
+    <mat-dialog-actions style="justify-content: space-around;">
+    <button mat-raised-button color="accent" [mat-dialog-close]="{form: f.value, id: id}">Mentés</button>
+    <button mat-raised-button [mat-dialog-close]="false">Mégse</button>
+  </mat-dialog-actions>
+</form>

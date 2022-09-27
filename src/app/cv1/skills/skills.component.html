@@ -1,0 +1,14 @@
+<div class="heading">
+  <mat-icon color="accent">data_object</mat-icon><h2> Technológiák</h2>
+  <button *ngIf="!printStatus" (click)="openNewDialog()">+</button>
+</div>
+
+<ul cdkDropList (cdkDropListDropped)="drop($event)">
+    <li *ngFor="let item of techList, let i = index" [matMenuTriggerFor]="menu" cdkDrag>
+      <mat-menu #menu="matMenu">
+        <button [disabled]="printStatus" mat-menu-item (click)="openEditDialog(i)">Szerkesztés</button>
+        <button [disabled]="printStatus" mat-menu-item (click)="openDeleteDialog(i)">Törlés</button>
+      </mat-menu>
+      <div>{{item.name}}</div> <mat-progress-bar mode="determinate" [value]="item.level" color="accent"></mat-progress-bar>
+    </li>
+</ul>

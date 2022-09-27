@@ -1,0 +1,26 @@
+<div class="heading">
+  <mat-icon color="accent">translate</mat-icon>
+  <h2> Nyelvismeret</h2>
+  <button *ngIf="!printStatus" (click)="openNewDialog()">+</button>
+</div>
+
+<ul>
+  <li *ngFor="let item of forLangList,
+    let i = index" [matMenuTriggerFor]="menu">
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="openEditDialog(i)" [disabled]="printStatus">Szerkesztés</button>
+      <button mat-menu-item (click)="openDeleteDialog(i)" [disabled]="printStatus">Törlés</button>
+    </mat-menu>
+    <div *ngIf="item.lang" class="content-icon">
+      {{item.lang}}
+    </div>
+    <div class="content">
+      <div *ngIf="item.contentFirst">
+        <b>{{item.contentFirst}}</b> <br>
+      </div>
+      <div *ngIf="item.contentSecond">
+        {{item.contentSecond}} <br>
+      </div>
+    </div>
+  </li>
+</ul>

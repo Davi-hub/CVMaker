@@ -1,0 +1,41 @@
+<div class="heading">
+  <mat-icon color="accent" class=".h-mat-icon">school</mat-icon>
+  <h2> Tanulmányok,</h2>
+  <mat-icon color="accent">work</mat-icon>
+  <h2> Munkahelyek</h2>
+  <button *ngIf="!printStatus" (click)="openNewDialog()">+</button>
+</div>
+
+<ul>
+  <li *ngFor="let item of stuJobsList, let i = index" [matMenuTriggerFor]="menu">
+    <mat-menu #menu="matMenu">
+      <button [disabled]="printStatus" mat-menu-item (click)="openEditDialog(i)">Szerkesztés</button>
+      <button [disabled]="printStatus" mat-menu-item (click)="openDeleteDialog(i)">Törlés</button>
+    </mat-menu>
+    <div *ngIf="item.years" class="content-icon">
+      {{item.years[1]}} -<br>
+      {{item.years [0]}} <br>
+    </div>
+    <div class="content">
+      <div *ngIf="item.contentFirst">
+        <b>{{item.contentFirst}}</b> <br>
+      </div>
+      <div *ngIf="item.contentSecond">
+        {{item.contentSecond}} <br>
+      </div>
+      <div  *ngIf="item.contentThird" class="last-text">
+        <ul class="ul-third">
+          <li *ngFor="let third of item.contentThird" class="third">
+            <span *ngIf="!printStatus || !third.cerLink">
+              {{third.item}}
+            </span>
+            <a *ngIf="printStatus && third.cerLink" href="{{third.cerLink}}" target="_blank">
+              {{third.item}}
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </li>
+</ul>
+

@@ -1,0 +1,38 @@
+<div class="heading">
+  <mat-icon color="accent">favorite</mat-icon><h2> Hobbim</h2>
+</div>
+
+<ul id="unorderedList">
+  <li *ngFor="let hobbiesX of hobbies, let i = index">
+    <div class="hobby" *ngFor="let hobby of hobbiesX, let j = index" [matMenuTriggerFor]="menu">
+      <mat-menu #menu="matMenu">
+        <button [disabled]="printStatus" mat-menu-item (click)="openEditDialog(i,j)">Szerkesztés</button>
+        <button [disabled]="printStatus" mat-menu-item (click)="openDeleteDialog(i,j)">Törlés</button>
+      </mat-menu>
+      <img [src]="hobby.src" alt="hobby">
+      <h5>{{ hobby.name }}</h5>
+    </div>
+    <div id="newHobby"
+      class="hobby"
+      *ngIf="i==hobbies.length-1 && !printStatus"
+      (click)="openNewDialog()"
+    >
+      <img src="../../../assets/li.png" alt="hobby">
+      <h5></h5>
+    </div>
+  </li>
+</ul>
+<ul *ngIf="this.arrayIsEmpty">
+  <li>
+    <div class="hobby"(click)="openNewDialog()">
+      <img src="../../../assets/li.png" alt="hobby">
+      <h5></h5>
+    </div>
+  </li>
+</ul>
+
+
+
+
+
+

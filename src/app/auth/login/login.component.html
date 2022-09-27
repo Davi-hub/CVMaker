@@ -1,0 +1,18 @@
+<section>
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="fill">
+      <input type="email" matInput placeholder="Email" formControlName="email">
+      <mat-error>Érvénytelen vagy hiányzó email cím!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input type="password" matInput placeholder="Jelszó" formControlName="password">
+      <mat-error>Érvénytelen vagy hiányzó jelszó!</mat-error>
+    </mat-form-field>
+    <button *ngIf="!spinnerState" mat-raised-button type="submit" [disabled]="loginForm.invalid" color="accent">
+      Bejelentkezés
+    </button>
+    <hr>
+    <a routerLink="/forgetpass" color="primary">Elfelejtett jelszó</a>
+    <mat-spinner *ngIf="spinnerState"></mat-spinner>
+  </form>
+</section>

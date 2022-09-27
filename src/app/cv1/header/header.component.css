@@ -1,0 +1,77 @@
+#img-half {
+  width: 50%;
+  height: 100%;
+  background-color: var(--primary);
+}
+
+#img-second-half {
+  width: 50%;
+  height: 100%;
+  background-color: transparent;
+}
+
+img {
+  height: 100%;
+  margin: auto;
+}
+
+mat-grid-list {
+  box-shadow: 0rem 0.2rem 0.5rem rgb(68, 67, 67);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+mat-grid-tile {
+  background: var(--primary);
+  color: white;
+  justify-content: left;
+  align-items: baseline;
+}
+
+mat-grid-tile.first {
+  background: #c0ca33;
+}
+
+#edit-tile {
+  justify-content: right;
+}
+
+h1 {
+  margin: auto auto auto 0.5rem;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+}
+
+.tile-content {
+  display: flex;
+}
+
+mat-icon {
+  margin: 0.4rem;
+  font-size: 1.5rem;
+  width: fit-content;
+  height: fit-content;
+}
+
+svg {
+  margin: 0.4rem;
+  fill: white;
+}
+
+span {
+  margin: auto;
+  font-size: 1rem;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.link {
+  display: block;
+  width: 15rem;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}

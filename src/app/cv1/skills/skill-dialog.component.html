@@ -1,0 +1,18 @@
+<form style="display: flex; flex-direction: column;" [formGroup]="f">
+  <mat-form-field>
+    <ng-container>
+      <input type="text" matInput placeholder="Milyen technológia?" formControlName="name">
+    </ng-container>
+  </mat-form-field>
+
+  <mat-form-field>
+    <ng-container>
+      <input type="number" matInput placeholder="Milyen szinten?" formControlName="level">
+    </ng-container>
+  </mat-form-field>
+
+  <mat-dialog-actions style="justify-content: space-around;">
+    <button mat-raised-button color="accent" [mat-dialog-close]="{form: f.value, id: id, index: index}">Mentés</button>
+    <button mat-raised-button [mat-dialog-close]="false">Mégse</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,17 @@
+<form style="display: flex; flex-direction: column;" [formGroup]="f">
+  <mat-form-field>
+    <ng-container>
+      <input type="text" matInput placeholder="Milyen hobbi?" formControlName="name">
+    </ng-container>
+  </mat-form-field>
+
+  <mat-form-field>
+    <ng-container>
+      <input type="text" matInput placeholder="Tölts fel képet!" formControlName="src">
+    </ng-container>
+  </mat-form-field>
+  <mat-dialog-actions style="justify-content: space-around;">
+    <button mat-raised-button color="accent" [mat-dialog-close]="{form: f.value, id: id}">Mentés</button>
+    <button mat-raised-button [mat-dialog-close]="false">Mégse</button>
+  </mat-dialog-actions>
+</form>

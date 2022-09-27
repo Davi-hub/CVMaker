@@ -1,0 +1,51 @@
+<form style="display: flex; flex-direction: column;" [formGroup]="f">
+  <mat-form-field>
+    <ng-container>
+      <input type="text" matInput placeholder="Vezetéknév" formControlName="lastName">
+    </ng-container>
+  </mat-form-field>
+
+  <mat-form-field>
+    <ng-container>
+      <input type="text" matInput placeholder="Keresztnév" formControlName="firstName">
+    </ng-container>
+  </mat-form-field>
+
+  <mat-form-field>
+    <ng-container>
+      <input type="text" matInput placeholder="Telefonszám" formControlName="phone">
+    </ng-container>
+  </mat-form-field>
+
+  <mat-form-field>
+    <ng-container>
+      <input type="text" matInput placeholder="Email" formControlName="email">
+    </ng-container>
+  </mat-form-field>
+
+  <mat-form-field>
+    <ng-container>
+      <input type="text" matInput placeholder="Cím" formControlName="local">
+    </ng-container>
+  </mat-form-field>
+
+  <mat-form-field>
+    <ng-container>
+      <input type="text" matInput placeholder="GitHub" formControlName="github">
+    </ng-container>
+  </mat-form-field>
+  <mat-form-field>
+    <ng-container>
+      <input type="text" matInput placeholder="LinkedIn" formControlName="linkedin">
+    </ng-container>
+  </mat-form-field>
+  <mat-form-field>
+    <ng-container>
+      <input type="text" matInput placeholder="Profilkép" formControlName="profile">
+    </ng-container>
+  </mat-form-field>
+  <mat-dialog-actions style="justify-content: space-around;">
+    <button mat-raised-button color="accent" [mat-dialog-close]="{form: f.value, id: id}">Mentés</button>
+    <button mat-raised-button [mat-dialog-close]="false">Mégse</button>
+  </mat-dialog-actions>
+</form>

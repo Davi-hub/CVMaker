@@ -1,0 +1,41 @@
+<section>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <mat-form-field>
+      <input
+        type="email"
+        matInput
+        placeholder="Email"
+        ngModel
+        name="email"
+        email
+        required
+        #emailInput="ngModel">
+      <mat-error *ngIf="emailInput.hasError('required')">Kötelező megadni!</mat-error>
+      <mat-error *ngIf="!emailInput.hasError('required')">Érvénytelen email cím!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input
+        type="password"
+        matInput
+        placeholder="Jelszó"
+        ngModel
+        name="password"
+        required=""
+        minlength="6"
+        #pwInput="ngModel">
+      <mat-hint>Legalább 6 karakter!</mat-hint>
+      <mat-hint align="end">{{pwInput.value?.length}}/6</mat-hint>
+      <mat-error>Legalább 6 karakter szükséges!</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="picker" [max]="maxDate" placeholder="Születési idő" required>
+      <mat-datepicker #picker></mat-datepicker>
+      <mat-datepicker-toggle [for]="picker" matSuffix></mat-datepicker-toggle>
+    </mat-form-field>
+    <mat-checkbox ngModel name="agree" required>Elfogadom a felhasználási feltételeket.</mat-checkbox>
+    <button mat-raised-button type="submit" [disabled]="f.invalid" color="accent">
+      Regisztráció
+    </button>
+    <mat-spinner *ngIf="spinnerState"></mat-spinner>
+  </form>
+</section>
