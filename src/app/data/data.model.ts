@@ -1,6 +1,6 @@
-export interface Goals {
+export interface About {
   id: string,
-  goalsText: string
+  aboutText: string
 }
 
 export interface PerData {
@@ -48,4 +48,4 @@ export class Hobby {
   ) {}
 }
 
- export type ItemTypes = ForLang | Goals | Hobby | PerData | StuJobs | Tech;
+ export type ItemTypes = ForLang | About | Hobby | PerData | StuJobs | Tech;

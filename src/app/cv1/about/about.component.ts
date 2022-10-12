@@ -1,22 +1,22 @@
 import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { DataService } from '../../data/data.service';
-import { Goals } from '../../data/data.model';
+import { About } from '../../data/data.model';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
-import { GoalsDialog } from './goals-dialog.component';
+import { AboutDialog } from './about-dialog.component';
 import { map } from 'rxjs/operators';
 import { PrintService } from 'src/app/print/print.service';
 import { AuthService } from 'src/app/auth/auth.service';
 
 @Component({
-  selector: 'app-goals',
-  templateUrl: './goals.component.html',
-  styleUrls: ['./goals.component.css']
+  selector: 'app-about',
+  templateUrl: './about.component.html',
+  styleUrls: ['./about.component.css']
 })
-export class GoalsComponent implements OnInit, OnDestroy {
+export class AboutComponent implements OnInit, OnDestroy {
 
-  goals: Goals = { id: "", goalsText: "Magamról..." };
-  subsGoalsChanged = new Subscription;
+  about: About = { id: "", aboutText: "Magamról..." };
+  subsAboutChanged = new Subscription;
   printStatus: boolean = false;
 
   constructor(
@@ -29,17 +29,17 @@ export class GoalsComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.printStatus = this.printService.isItPrintMode();
     if (this.authService.isAuth()) {
-      this.dataService.fetchGoals();
-      this.subsGoalsChanged = this.dataService.goalsChanged.subscribe(goals => this.goals = goals);
+      this.dataService.fetchAbout();
+      this.subsAboutChanged = this.dataService.aboutChanged.subscribe(about => this.about = about);
     }
-    const text = sessionStorage.getItem('goalsText');
+    const text = sessionStorage.getItem('aboutText');
     if (text && !this.authService.isAuth()){
-      this.goals = {id: "", goalsText: text};
+      this.about = {id: "", aboutText: text};
     }
   }
 
   openDialog() {
-    const dialRef = this.dialog.open(GoalsDialog, { data: this.goals });
+    const dialRef = this.dialog.open(AboutDialog, { data: this.about });
     dialRef.afterClosed().pipe(map(data => {
       if (data === "") {
         return "Magamról...";
@@ -50,17 +50,17 @@ export class GoalsComponent implements OnInit, OnDestroy {
     ))
       .subscribe(data => {
         if (data && this.authService.isAuth()) {
-          this.dataService.updateItem(this.goals, 'goals');
+          this.dataService.updateItem(this.about, 'about');
         } else if (data) {
-          sessionStorage.setItem('goalsText', data);
-          this.goals.goalsText = data;
+          sessionStorage.setItem('aboutText', data);
+          this.about.aboutText = data;
         }
       })
   }
 
   ngOnDestroy(): void {
-    if (this.subsGoalsChanged) {
-      this.subsGoalsChanged.unsubscribe();
+    if (this.subsAboutChanged) {
+      this.subsAboutChanged.unsubscribe();
     }
   }
 }

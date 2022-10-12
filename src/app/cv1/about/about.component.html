@@ -1,0 +1,9 @@
+<div class="heading">
+  <mat-icon color="accent">account_circle</mat-icon><h2>Magamról</h2>
+</div>
+<div id="rem">
+  <p *ngIf="!printStatus" class="noprint" (click)="openDialog()">{{about.aboutText}}</p>
+  <p *ngIf="printStatus">{{about.aboutText}}</p>
+</div>
+
+

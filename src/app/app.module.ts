@@ -16,13 +16,13 @@ import { StudiesJobsComponent } from './cv1/studies-jobs/studies-jobs.component'
 import { ForLangComponent } from './cv1/forLang/for-lang.component';
 import { SkillsComponent } from './cv1/skills/skills.component';
 import { HobbiesComponent } from './cv1/hobbies/hobbies.component';
-import { GoalsComponent } from './cv1/goals/goals.component';
+import { AboutComponent } from './cv1/about/about.component';
 import { Cv1Component } from './cv1/cv1.component';
 import { Cv2Component } from './cv2/cv2.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LoginComponent } from './auth/login/login.component';
 
-import { GoalsDialog } from './cv1/goals/goals-dialog.component';
+import { AboutDialog } from './cv1/about/about-dialog.component';
 import { StudiesJobsDialogComponent } from './cv1/studies-jobs/studies-jobs-dialog.component';
 import { ForLangDialogComponent } from './cv1/forLang/for-lang-dialog.component';
 import { SkillsDialogComponent } from './cv1/skills/skills-dialog.component';
@@ -45,12 +45,12 @@ import { DragDropModule } from '@angular/cdk/drag-drop'
     ForLangComponent,
     SkillsComponent,
     HobbiesComponent,
-    GoalsComponent,
+    AboutComponent,
     Cv1Component,
     Cv2Component,
     SignupComponent,
     LoginComponent,
-    GoalsDialog,
+    AboutDialog,
     StudiesJobsDialogComponent,
     ForLangDialogComponent,
     SkillsDialogComponent,
@@ -77,7 +77,7 @@ import { DragDropModule } from '@angular/cdk/drag-drop'
   providers: [AngularFirestore],
   bootstrap: [AppComponent],
   entryComponents: [
-    GoalsDialog,
+    AboutDialog,
     StudiesJobsDialogComponent,
     ForLangDialogComponent,
     SkillsDialogComponent,

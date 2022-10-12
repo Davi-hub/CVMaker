@@ -5,7 +5,7 @@ import { Subject } from "rxjs";
 import { Router } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
 import { DataService } from "../data/data.service";
-import { Goals } from "../data/data.model"
+import { About } from "../data/data.model"
 
 @Injectable({providedIn: 'root'})
 export class AuthService {
@@ -102,7 +102,7 @@ export class AuthService {
 
   useSessions() {
     const perData = sessionStorage.getItem('perData');
-    const goals = sessionStorage.getItem('goals');
+    const about = sessionStorage.getItem('about');
     const stuJobsList = sessionStorage.getItem('stuJobsList');
     const forLangs = sessionStorage.getItem('forLangs');
     const techList = sessionStorage.getItem('techList');
@@ -110,8 +110,8 @@ export class AuthService {
     if (perData) {
       this.dataService.updateItem(JSON.parse(perData), 'perdata');
     }
-    if (goals) {
-      this.dataService.updateItem(JSON.parse(goals), 'goals');
+    if (about) {
+      this.dataService.updateItem(JSON.parse(about), 'about');
     }
     if (stuJobsList) {
       this.dataService.addItem(JSON.parse(stuJobsList), 'stuJobs');

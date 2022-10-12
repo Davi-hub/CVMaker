@@ -3,13 +3,13 @@ import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore } from 'angularfire2/firestore';
 import { Subject } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { ForLang, Goals, Hobby, PerData, StuJobs, Tech, ItemTypes } from './data.model';
+import { ForLang, About, Hobby, PerData, StuJobs, Tech, ItemTypes } from './data.model';
 
 
 @Injectable({ providedIn: "root" })
 export class DataService {
 
-  goalsChanged = new Subject<Goals>();
+  aboutChanged = new Subject<About>();
   stuJobsListChanged = new Subject<StuJobs[]>();
   forLangsListChanged = new Subject<ForLang[]>();
   techListChanged = new Subject<Tech[]>();
@@ -49,9 +49,9 @@ export class DataService {
     )
   }
 
-  fetchGoals() {
-    this.fetchItem('goals').subscribe((goals: any) => {
-        this.goalsChanged.next(goals[0]);
+  fetchAbout() {
+    this.fetchItem('about').subscribe((about: any) => {
+        this.aboutChanged.next(about[0]);
       },
       error => {
         console.log(error)
@@ -109,7 +109,7 @@ export class DataService {
   createDataSet(id: any) {
     this.db.collection('users').doc(id).set({});
     this.db.collection('users').doc(id).collection('perdata').add(this.personal);
-    this.db.collection('users').doc(id).collection('goals').add({ goalsText: "Magamról..." });
+    this.db.collection('users').doc(id).collection('about').add({ aboutText: "Magamról..." });
   }
 
   private get userId() {
